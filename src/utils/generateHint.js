@@ -8,9 +8,9 @@ const generateHint = (lastGuess, combo, max) => {
 
   const guessNotCombo = [...guessSet].filter((n) => !comboSet.has(n));
 
-  /* no numbers in the guess in the combo,
-   * or the combo has more unique numbers
-   * than the guess */
+  /* Case 1: no numbers in the guess are
+   * in the combo, or the combo has more
+   * unique numbers than the guess */
   if (
     guessNotCombo.length === guessSet.size
     || comboSet.size > guessSet.size
@@ -22,29 +22,42 @@ const generateHint = (lastGuess, combo, max) => {
         notGuessOrCombo.push(i);
       }
     }
+    /* Returns a number not in either array.
+     * Without checking for combo vs guess
+     * size, if the guess was 2111 and the
+     * combo 1234, it would trigger Case 3b
+     * and display a correct place, which
+     * would give away too much. */
     const num = getRandomNum(notGuessOrCombo);
     return `${num} is not in the code.`;
   }
 
-  // some numbers in the guess are not in the combo
+  /* Case 2: some numbers in the guess are
+   * not in the combination */
   if (guessNotCombo.length > 0) {
+    /* Returns a number that is in the guess
+     * but not the combo since the player
+     * is more far along */
     const num = getRandomNum(guessNotCombo);
     return `${num} is not in the code.`;
   }
 
-  // some misplaced numbers
+  // Case 3: some misplaced numbers
   const wrongLocations = [];
   for (let i = 0; i < max; i += 1) {
     if (guessArr[i] !== comboArr[i]) {
       wrongLocations.push(i);
     }
   }
+  // Case 3a: not all numbers are misplaced
   if (wrongLocations.length <= 3) {
     const index = getRandomNum(wrongLocations);
     return `Place #${index + 1} is incorrect.`;
   }
-  // all wrong placements
+  // Case 3b: all numbers are misplaced
   const index = getRandomNum(wrongLocations);
+  /* Returns a correct location since the player
+   * already knows that they are all incorrect */
   return `Place #${index + 1} is ${comboArr[index]}.`;
 };
 

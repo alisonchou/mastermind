@@ -54,6 +54,9 @@ export const StatContainer = styled(FlexAlignCenter)`
 `;
 
 export const Text = styled.div`
+  /* Matches font size and color
+   * parameters to property in
+   * theme object */
   font-size: ${({ fontSize, theme }) => theme.fontSizes[fontSize] || theme.fontSizes.normal};
   color: ${({ color, theme }) => theme.colors[color] || theme.colors.primary};
   letter-spacing: ${({ letterSpace }) => letterSpace || 0};

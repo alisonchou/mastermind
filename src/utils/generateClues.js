@@ -6,9 +6,9 @@ const generateClues = (guess, combo) => {
   for (let i = 0; i < 4; i += 1) {
     if (guessArr[i] === comboArr[i]) {
       correctPlacements += 1;
-      /* "Correct Numbers" should only include numbers
-       * not already matched in "Correct Placements",
-       * so we remove the number from both arrays. */
+      /* Removes number from both arrays because
+       * "Correct Numbers" should only include numbers
+       * not already matched in "Correct Placements" */
       guessArr[i] = '';
       comboArr[i] = '';
     }
@@ -18,9 +18,9 @@ const generateClues = (guess, combo) => {
       const comboIndex = comboArr.indexOf(guessArr[i]);
       if (comboIndex !== -1) {
         correctNums += 1;
-        /* A number that is in the guess twice but the
-         * combination once should only be counted once,
-         * so we remove it from the combination. */
+        /* Remove item from combination because a
+         * number that is in the guess twice but the
+         * combination once should only be counted once */
         comboArr.splice(comboIndex, 1);
       }
     }

@@ -22,6 +22,9 @@ const gameReducer = (state = initialState, action) => {
     case 'ADD_GUESS':
       return {
         ...state,
+        /* Adds guess to front of array
+         * so that guess history is ordered
+         * by most recent */
         guesses: ([{
           guess: action.guess,
           number: state.guesses.length + 1,
@@ -37,6 +40,9 @@ const gameReducer = (state = initialState, action) => {
         ...state,
         time: {
           ...state.time,
+          /* Subtracts current time from
+           * starting time and convert
+           * to seconds */
           elapsed: Math.floor((Date.now() - state.time.start) / 1000),
         },
       };

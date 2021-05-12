@@ -1,3 +1,5 @@
+/* Adds a zero before single-digit seconds
+ * or minutes for consistent formatting */
 const formatVal = (val) => val.toString().padStart(2, '0');
 
 const formatSeconds = (seconds) => {

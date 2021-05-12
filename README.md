@@ -1,4 +1,8 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Contributions Welcome](https://img.shields.io/badge/Contributions-welcome-blue.svg)](https://github.com/alisonchou/mastermind/pulls)
+
 # Master Mastermind
+
 
 The mastermind game, brought to your browser by
 [Master Mastermind](https://mastermastermind.herokuapp.com/)!
@@ -150,7 +154,7 @@ position.
 
 ## You're a wizard, too! ⚡
 
-Want to run Master Mastermind locally?
+### Want to run Master Mastermind locally?
 
 Just run the following commands:
 
@@ -165,3 +169,80 @@ Once you've configured the project,
 you can run tests with the command
 `npm test` or run the linter with
 `npm run lint`.
+
+### Contributing
+
+To take part in improving Master
+Mastermind:
+1. [Fork](https://docs.github.com/github/getting-started-with-github/fork-a-repo#fork-an-example-repository)
+the repository.
+2. Make your changes.
+3. Send us a
+[pull request](https://github.com/alisonchou/mastermind/pulls).
+
+### Questions? Bug Reports?
+
+If you have any questions or
+find any bugs, please feel free to
+[add an issue](https://github.com/alisonchou/mastermind/issues/new)!
+🐞
+
+## Roadmap
+
+### Planning
+- Backend
+  - Connect `MongoDB` database to
+    `Apollo GraphQL` server
+  - Accounts
+    - Use `bcrypt` and `jsonwebtoken`
+      for secure authentication and
+      authorization
+    - Remember game statistics for
+      each user
+  - Multiplayer
+    - Allow players to compete
+      against each other to
+      guess the same combination
+      in the shortest time
+    - Sync player results with
+      `GraphQL` subscriptions
+- Reducer and action creator
+  tests
+  - Obtain 100% test coverage
+    of `gameReducer.js` and
+    `gameActions.js`
+- Engineer AI to solve the
+  game with
+  [increasing digits strategy](https://puzzling.stackexchange.com/a/549)
+  and display its steps to
+  user
+
+### Done!
+- Generate random code
+  - Use Random.org API
+- Limit attempts to 10 and
+  show number of attempts left
+- Show history of guesses
+- Feedback
+  - Display correct numbers
+    and correct placements
+  - Offer hint on numbers or
+    placement after six guesses
+- Inform user when they
+  win (guess combo) or
+  lose (run out of guesses)
+- Create configurable difficulty
+  level
+- Reducer tests
+    - Test initial state,
+      `START_GAME` and `ADD_GUESS`
+- Action creator tests
+    - Test `startGame()`
+- Game Statistics
+  - Count wins and losses
+  - Time each game and
+    keep track of fastest
+    win time
+- Styling
+  - Create global theme
+- Deploy to Heroku

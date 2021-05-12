@@ -11,6 +11,9 @@ const GuessHistory = ({ guesses, combo }) => {
     const clues = generateClues(g, combo);
     return (
       <GuessClues>
+        { /* Renders a black dot for every correct
+           * placement and a white dot for every
+           * correct number. */ }
         { [...Array(clues.correctPlacements)].map((_, i) => (
           // eslint-disable-next-line react/no-array-index-key
           <ClueDot key={i} />
