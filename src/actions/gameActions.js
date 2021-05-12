@@ -33,7 +33,7 @@ export const setHint = () => ({
   type: 'SET_HINT',
 });
 
-export const winGame = (mode) => async (dispatch) => {
+export const winGame = (mode) => (dispatch) => {
   timer = clearInterval(timer);
   dispatch({
     type: 'WIN_GAME',
@@ -41,7 +41,7 @@ export const winGame = (mode) => async (dispatch) => {
   });
 };
 
-export const loseGame = (mode) => async (dispatch) => {
+export const loseGame = (mode) => (dispatch) => {
   timer = clearInterval(timer);
   dispatch({
     type: 'LOSE_GAME',

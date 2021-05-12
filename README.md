@@ -4,8 +4,8 @@ The mastermind game, brought to your browser by
 [Master Mastermind](https://mastermastermind.herokuapp.com/)!
 Gone are the days of waiting for the other player
 to place pegs. Now, you can code-break all on your
-own, and our magic will intelligently generate
-codes, clues, and hints. 🤯
+own, and our magic will generate the codes, clues,
+and hints. 🤯
 
 ## How to play 🖱️
 
@@ -17,8 +17,8 @@ To the right, you can see on the number
 of guesses that remain before you lose.
 
 A black dot means that a correct number is in
-a **correct** spot. A white dot means that a correct
-number is in the an **incorrect** spot.
+a **correct** spot. A white dot means that a
+correct number is in an **incorrect** spot.
 
 ![Guess History](/screenshots/GuessHistory.PNG 'Guess History')
 
@@ -40,7 +40,7 @@ mode and `0-7` in normal mode.
 
 ## Behind the "magic" 🧐
 
-I built Master Mastermind with React.
+I built Master Mastermind with `React`.
 I chose React for its out-of-the-box
 immediate data updates, which were
 vital to the game.
@@ -51,13 +51,28 @@ the project, I centralized state
 with `Redux`. Following game events
 (such as winning a game or adding
 a guess), I dispatched actions that
-updated the store. This added simplicity
-and maintainability.
+updated the store. I used the
+`redux-thunk` middleware to run
+operations, like generating the
+combination, before the action was
+dispatched. Adding Redux created
+robustness and maintainability.
+
+I tested the Redux reducer and
+action creators with `Jest`. In the
+reducer tests, I used `deep-freeze`
+to ensure that the state I passed
+was not modified. In the action
+creator tests, I created a mock
+store with `redux-mock-store` to
+dispatch the actions being tested and
+reset the store with `fetch-mock`.
 
 To create the combination, I called the
-[Random.org Integer API](https://www.random.org/integers/).
-I passed `0` as the min and `6` or `7` as
-the max based on the game mode.
+[Random.org Integer API](https://www.random.org/integers/)
+using `axios`. I passed `0` as the min
+and `6` or `7` as the max based on
+the game mode.
 
 For accuracy, I implemented the timer
 with the `Date` object instead of
@@ -81,16 +96,16 @@ and add CSS to each component.
 
 After each guess, I calculated the correct
 numbers (in incorrect location) and correct
-placements (correct numbers in correct location)
-to show as feedback.
+placements (correct numbers in correct
+location) to show as feedback.
 
-First, I iterated through the guess and
-combination arrays. If the values at an
-index were the same, I incremented the
-count of correct placements. I removed
-the value from both arrays so that this
-value would not also be counted as a
-correct number.
+First, I created and iterated through
+guess and combination arrays. If the
+values at an index were the same, I
+incremented the count of correct
+placements. I removed the value from
+both arrays so that this value would
+not be later counted as a correct number.
 
 Next, I iterated through the guess array.
 If a value in the guess was also in the
