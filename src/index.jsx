@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
 ReactDOM.render(
   <ThemeProvider theme={globalTheme}>
     <Provider store={store}>
-      <GlobalStyle whiteColor />
+      <GlobalStyle />
       <App />
     </Provider>
   </ThemeProvider>,
