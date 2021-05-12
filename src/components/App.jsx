@@ -42,7 +42,6 @@ const App = () => {
       <Header>
         Mastermind
         <HeaderSpan />
-        { `  ${game.combo}` }
       </Header>
       <GameContainer
         combo={game.combo}
