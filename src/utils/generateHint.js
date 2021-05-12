@@ -9,8 +9,8 @@ const generateHint = (lastGuess, combo, max) => {
   const guessNotCombo = [...guessSet].filter((n) => !comboSet.has(n));
 
   /* no numbers in the guess in the combo,
-   * or some numbers in the combo are not
-   * in the guess (guess has duplicates) */
+   * or the combo has more unique numbers
+   * than the guess */
   if (
     guessNotCombo.length === guessSet.size
     || comboSet.size > guessSet.size
